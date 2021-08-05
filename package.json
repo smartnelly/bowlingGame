@@ -1,0 +1,23 @@
+{
+  "name": "bowling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bowling.js",
+  "devDependencies": {
+    "jasmine": "^3.8.0"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartnelly/bowlingGame.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smartnelly/bowlingGame/issues"
+  },
+  "homepage": "https://github.com/smartnelly/bowlingGame#readme"
+}

@@ -55,22 +55,22 @@ class bowlingGame {
     //for each frame (10 in total)
     for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
       //Strike
-        if (this.isStrike(rollIndex)) {
-          //apply strike bonus
+      if (this.isStrike(rollIndex)) {
+        //apply strike bonus
         score += this.strikeBonus(rollIndex);
         rollIndex++;
         continue;
       }
       //Spare
       let frameScore = this.sumFrame(rollIndex);
-        if (this.isSpare(frameScore)) {
-          //apply spare bonus
-          score += this.spareBonus(rollIndex);
-        } else {
+      if (this.isSpare(frameScore)) {
+        //apply spare bonus
+        score += this.spareBonus(rollIndex);
+      } else {
         score += frameScore;
       }
 
-      rollIndex += 2;//move onto the first roll of the next frame
+      rollIndex += 2; //move onto the first roll of the next frame
     }
     return score;
   }
@@ -94,3 +94,4 @@ class bowlingGame {
     return this.rolls[rollIndex] === 10;
   }
 }
+module.exports = bowlingGame;
