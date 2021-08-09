@@ -44,45 +44,75 @@ class bowlingGame {
     this.rolls = [];
   }
 
+  //number of pins rolled every
   roll(noOfPins) {
-    this.rolls.push(noOfPins); //number of pins knocked every roll
+    if (noOfPins >= 0 && noOfPins <= 10 && Number.isInteger(noOfPins)) {
+      this.rolls.push(noOfPins);
+    } else {
+      return "Error";
+    }
   }
 
   get score() {
     let score = 0;
     let rollIndex = 0;
 
+    // for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
+    //   if (this.rolls[rollIndex] === 10) {
+    //     //if strike
+    //     //apply strike bonus
+    //     score += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+    //     rollIndex++; //move onto the next roll
+    //     continue; //move onto next iteration in the loop
+    //   }
+
+    //   //sum total pins in this frame (2 rolls)
+    //   let frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+
+    //   if (frameScore === 10) {
+    //     //if spare
+    //     score += 10 + this.rolls[rollIndex + 2]; //apply spare bonus
+    //   } else {
+    //     score += frameScore;
+    //   }
+
+    //   rollIndex += 2; //move onto the first roll of the next frame
+    // }
+
     //for each frame (10 in total)
     for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
       //Strike
       if (this.isStrike(rollIndex)) {
         //apply strike bonus
-        score += this.strikeBonus(rollIndex);
+        score += this.strikeSum(rollIndex);
         rollIndex++;
+        console.log("rollIndex ++ =" + rollIndex);
         continue;
       }
       //Spare
       let frameScore = this.sumFrame(rollIndex);
       if (this.isSpare(frameScore)) {
         //apply spare bonus
-        score += this.spareBonus(rollIndex);
+        score += this.spareSum(rollIndex);
       } else {
+        // not strike or spare
         score += frameScore;
       }
 
       rollIndex += 2; //move onto the first roll of the next frame
+      console.log("rollIndex += 2 = " + rollIndex);
     }
     return score;
   }
-
+  //sum total pins rollws in this frame (2 rolls)
   sumFrame(rollIndex) {
     return this.rolls[rollIndex] + this.rolls[rollIndex + 1];
   }
 
-  spareBonus(rollIndex) {
+  spareSum(rollIndex) {
     return 10 + this.rolls[rollIndex + 2];
   }
-  strikeBonus(rollIndex) {
+  strikeSum(rollIndex) {
     return 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
   }
 
